@@ -1,0 +1,241 @@
+/**
+ * Admin styles for Mailgun Groundhogg integration
+ */
+
+/* Event Details Page */
+.mailgun-gh-event-details {
+    margin-top: 20px;
+}
+
+.mailgun-gh-event-details h2 {
+    margin-bottom: 15px;
+}
+
+.mailgun-gh-event-details h3 {
+    margin: 25px 0 15px;
+}
+
+.mailgun-gh-event-details pre {
+    margin: 0;
+    padding: 10px;
+    background: #f5f5f5;
+    overflow: auto;
+    max-height: 300px;
+}
+
+/* Settings Page */
+.mailgun-gh-settings-help {
+    margin-top: 40px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.mailgun-gh-settings-help h2 {
+    margin-top: 0;
+}
+
+.mailgun-gh-settings-help ol {
+    margin-left: 20px;
+}
+
+.mailgun-gh-settings-help ul {
+    margin-left: 20px;
+}
+
+.mailgun-gh-settings-help li {
+    margin-bottom: 10px;
+}
+
+/* Events List Page */
+.mailgun-gh-filters {
+    margin: 15px 0 25px;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.mailgun-gh-filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.mailgun-gh-stats {
+    margin-bottom: 25px;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.mailgun-gh-stats h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+/* Fix for stats grid layout */
+.mailgun-gh-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 15px;
+}
+
+.mailgun-gh-stat-card {
+    padding: 15px;
+    background: #f8f8f8;
+    border-radius: 4px;
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.mailgun-gh-stat-count {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #23282d;
+}
+
+.mailgun-gh-stat-label {
+    font-size: 14px;
+    color: #72777c;
+    margin-bottom: 5px;
+}
+
+.mailgun-gh-stat-percent {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.mailgun-gh-stat-card.bounce {
+    background-color: #ffecec;
+    border-color: #ffbaba;
+}
+
+.mailgun-gh-stat-card.bounce .mailgun-gh-stat-count {
+    color: #d63638;
+}
+
+.mailgun-gh-stat-card.complaint {
+    background-color: #fff6ec;
+    border-color: #ffd8ba;
+}
+
+.mailgun-gh-stat-card.complaint .mailgun-gh-stat-count {
+    color: #b26200;
+}
+
+.mailgun-gh-stat-card.unsubscribe {
+    background-color: #f0f6fc;
+    border-color: #c5d9ed;
+}
+
+.mailgun-gh-stat-card.unsubscribe .mailgun-gh-stat-count {
+    color: #2271b1;
+}
+
+.mailgun-gh-stat-card.total {
+    background-color: #f6f7f7;
+    border-color: #dcdcde;
+}
+
+.mailgun-gh-stat-card.total .mailgun-gh-stat-count {
+    color: #3c434a;
+}
+
+.mailgun-gh-stats-note {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Add dashboard widget styles */
+.mailgun-gh-dashboard-widget .inside {
+    padding-bottom: 0;
+}
+
+.mailgun-gh-dashboard-widget-summary {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.mailgun-gh-dashboard-stat {
+    flex: 1;
+    min-width: 100px;
+    margin: 0 10px 10px 0;
+    padding: 10px;
+    background: #f8f8f8;
+    border-radius: 4px;
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.mailgun-gh-dashboard-stat-count {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #23282d;
+}
+
+.mailgun-gh-dashboard-stat-label {
+    font-size: 12px;
+    color: #72777c;
+}
+
+.mailgun-gh-dashboard-stat.bounce {
+    background-color: #ffecec;
+    border-color: #ffbaba;
+}
+
+.mailgun-gh-dashboard-stat.bounce .mailgun-gh-dashboard-stat-count {
+    color: #d63638;
+}
+
+.mailgun-gh-dashboard-stat.complaint {
+    background-color: #fff6ec;
+    border-color: #ffd8ba;
+}
+
+.mailgun-gh-dashboard-stat.complaint .mailgun-gh-dashboard-stat-count {
+    color: #b26200;
+}
+
+.mailgun-gh-dashboard-stat.unsubscribe {
+    background-color: #f0f6fc;
+    border-color: #c5d9ed;
+}
+
+.mailgun-gh-dashboard-stat.unsubscribe .mailgun-gh-dashboard-stat-count {
+    color: #2271b1;
+}
+
+.mailgun-gh-dashboard-recent-events {
+    margin-bottom: 10px;
+}
+
+.mailgun-gh-dashboard-recent-events table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.mailgun-gh-dashboard-recent-events th,
+.mailgun-gh-dashboard-recent-events td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.mailgun-gh-dashboard-recent-events th {
+    background: #f8f8f8;
+}
+
+.mailgun-gh-dashboard-view-all {
+    text-align: right;
+    margin-top: 10px;
+}
