@@ -104,6 +104,9 @@ class WebhookHandler {
         $event_type = $postData['event-data']['event'] ?? 'unknown';
         $recipient = $postData['event-data']['recipient'] ?? 'unknown';
         
+        // Log any error data from Mailgun
+        $this->log_mailgun_error_data($postData);
+        
         if (empty($event_type) || empty($recipient)) {
             error_log('Mailgun webhook missing required parameters');
             wp_die('Missing required parameters', 'Mailgun Webhook Error', array('response' => 400));
@@ -118,6 +121,61 @@ class WebhookHandler {
         // Return success
         error_log('Mailgun webhook processed successfully');
         wp_die('OK', 'Mailgun Webhook Success', array('response' => 200));
+    }
+
+    /**
+     * Log any error data received from Mailgun
+     *
+     * @param array $postData The webhook data from Mailgun
+     */
+    private function log_mailgun_error_data($postData) {
+        // Check if there's any error information in the event data
+        if (!empty($postData['event-data'])) {
+            $eventData = $postData['event-data'];
+            
+            // Log specific error details for different event types
+            if (in_array($eventData['event'] ?? '', ['failed', 'bounced', 'complained', 'rejected'])) {
+                // Log the full event for error events
+                error_log('Mailgun error event details: ' . print_r($eventData, true));
+                
+                // Log delivery status if available
+                if (!empty($eventData['delivery-status'])) {
+                    $deliveryStatus = $eventData['delivery-status'];
+                    error_log('Mailgun delivery status: ' . print_r($deliveryStatus, true));
+                    
+                    // Log specific error codes and messages
+                    if (!empty($deliveryStatus['code'])) {
+                        error_log('Mailgun error code: ' . $deliveryStatus['code']);
+                    }
+                    if (!empty($deliveryStatus['message'])) {
+                        error_log('Mailgun error message: ' . $deliveryStatus['message']);
+                    }
+                    if (!empty($deliveryStatus['description'])) {
+                        error_log('Mailgun error description: ' . $deliveryStatus['description']);
+                    }
+                }
+                
+                // Log specific error details for bounces
+                if (($eventData['event'] ?? '') === 'bounced' && !empty($eventData['bounce'])) {
+                    error_log('Mailgun bounce details: ' . print_r($eventData['bounce'], true));
+                }
+                
+                // Log specific error details for complaints
+                if (($eventData['event'] ?? '') === 'complained' && !empty($eventData['complaint'])) {
+                    error_log('Mailgun complaint details: ' . print_r($eventData['complaint'], true));
+                }
+                
+                // Log recipient domain and address for troubleshooting
+                if (!empty($eventData['recipient-domain'])) {
+                    error_log('Mailgun recipient domain: ' . $eventData['recipient-domain']);
+                }
+                
+                // Log message headers if available
+                if (!empty($eventData['message']['headers'])) {
+                    error_log('Mailgun message headers: ' . print_r($eventData['message']['headers'], true));
+                }
+            }
+        }
     }
 
     /**
